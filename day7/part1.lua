@@ -1,5 +1,5 @@
 -- AOC 2024 Day 7 Part 1
--- done on 12/12/24
+-- done on 12/13/24
 
 local i = 1
 local eqs = {}

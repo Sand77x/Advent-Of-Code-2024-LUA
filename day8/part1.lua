@@ -1,3 +1,6 @@
+-- AOC 2024 Day 8 Part 1
+-- done on 12/15/24
+
 local ants = {}
 local i = 1
 local rows, cols
