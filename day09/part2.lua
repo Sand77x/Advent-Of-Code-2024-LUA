@@ -1,5 +1,5 @@
--- AOC 2024 Day 7 Part 2
--- done on 12/15/24
+-- AOC 2024 Day 9 Part 2
+-- done on 12/16/24
 
 local input = io.open("input.txt", "r")
 if input == nil then return end
