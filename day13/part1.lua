@@ -1,3 +1,6 @@
+-- AOC 2024 Day 13 Part 1
+-- done on 12/21/24
+
 local file = io.open("input.txt")
 
 if not file then
