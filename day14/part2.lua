@@ -1,5 +1,5 @@
 -- AOC 2024 Day 14 Part 2
--- done on 1/4/24
+-- done on 1/5/24
 
 local Robot = {}
 Robot.ROWS = 103 -- 103
@@ -52,12 +52,38 @@ function Robot.print_robots(robots)
     end
 
     for _, r in ipairs(robots) do
-        graph[r.x + 1][r.y + 1] = "X"
+        graph[r.x + 1][r.y + 1] = graph[r.x + 1][r.y + 1] == "." and 1 or graph[r.x + 1][r.y + 1] + 1
     end
 
     for i = 1, Robot.ROWS do
         print(table.unpack(graph[i]))
     end
+end
+
+function Robot.weird(robots)
+    local graph = {}
+    for i = 1, Robot.ROWS do
+        graph[i] = {}
+        for j = 1, Robot.COLS do
+            graph[i][j] = "."
+        end
+    end
+
+    for _, r in ipairs(robots) do
+        graph[r.x + 1][r.y + 1] = graph[r.x + 1][r.y + 1] == "." and 1 or graph[r.x + 1][r.y + 1] + 1
+    end
+
+    local impurity = 0
+    local thresh = 9925
+    for i = 1, Robot.ROWS do
+        for j = 1, Robot.COLS do
+            if graph[i][j] == "." then
+                impurity = impurity + 1
+            end
+        end
+    end
+
+    return impurity > thresh
 end
 
 -- input
@@ -72,21 +98,32 @@ for line in io.lines("input.txt") do
     }))
 end
 
--- search for easter egg
--- local max_seconds = 200
--- for i = 0, max_seconds do
---     print(("SECONDS: %d"):format(i))
+-- search for easter egg (vertical pattern happen every 66 + 101n, for n >= 0)
+-- local max_seconds = 66 + 101 * 2000
+-- for i = 66, max_seconds, 101 do
+--     local quadrants = {
+--         [0] = 0,
+--         [1] = 0,
+--         [2] = 0,
+--         [3] = 0,
+--         [4] = 0,
+--     }
+
 --     local seconds = i
 --     local robots_after = {}
 --     for _, r in ipairs(robots) do
---         table.insert(robots_after, r:pos_after_sec(seconds))
+--         local after = r:pos_after_sec(seconds)
+--         local q = after:quadrant()
+--         table.insert(robots_after, after)
+--         quadrants[q] = quadrants[q] + 1
 --     end
 
+--     print(("SECONDS: %d"):format(i))
 --     Robot.print_robots(robots_after)
 -- end
 
 -- here is what the correct solution looks like
-local seconds = 66 -- first occurance
+local seconds = 7338 -- first occurance
 print(("SECONDS: %d"):format(seconds))
 
 local robots_after = {}
