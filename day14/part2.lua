@@ -60,6 +60,7 @@ function Robot.print_robots(robots)
     end
 end
 
+-- bad weird function, didn't end up using it since i spotted the tree using brute force 
 function Robot.weird(robots)
     local graph = {}
     for i = 1, Robot.ROWS do
