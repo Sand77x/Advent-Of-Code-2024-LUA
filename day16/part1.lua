@@ -119,7 +119,6 @@ function S.a_star(start, goal, h)
                 goto bad_node
             end
 
-
             local updated_gcost = current.gcost + current:action_cost(neighbor)
 
             if not is_in(open_list, neighbor) then
@@ -161,3 +160,8 @@ end
 local final_node = S.a_star(start, goal, manhattan_dist)
 local ans = S.compute_score(final_node)
 print(ans)
+
+-- for future me,
+-- to find more best paths, record the BEST score
+-- then do a dfs-based approach, if current score > BEST score
+-- stop else continue and once done, record which tiles were visited
