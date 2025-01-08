@@ -4,6 +4,7 @@
 local node = require("./node")
 
 local S = {}
+S.map = {}
 
 --- helper functions ---
 S.EAST = 1
@@ -137,12 +138,13 @@ function S.a_star(start, goal, h)
 end
 
 --- main ---
-S.map = {}
 
-local start = nil
-local goal = nil
+local ans = nil
 
-do -- populate map and get start and goal nodes
+do
+    local start = nil
+    local goal = nil
+
     local ln = 1
     for line in io.lines("input.txt") do
         local r = {}
@@ -155,10 +157,11 @@ do -- populate map and get start and goal nodes
         table.insert(S.map, r)
         ln = ln + 1
     end
+
+    local final_node = S.a_star(start, goal, manhattan_dist)
+    ans = S.compute_score(final_node)
 end
 
-local final_node = S.a_star(start, goal, manhattan_dist)
-local ans = S.compute_score(final_node)
 print(ans)
 
 -- for future me,
