@@ -32,7 +32,7 @@ S.procs = {
         end
     end,
     -- BXC bx <- bx ^ cx
-    [4] = function(r1)
+    [4] = function(_)
         S.bx = S.bx ~ S.cx
         S.ip = S.ip + 2
     end,

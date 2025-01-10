@@ -14,14 +14,6 @@ for i in io.read("l"):gmatch("%d") do
     table.insert(inp.instructions, tonumber(i))
 end
 
-local function is_eq(x, y)
-    if #x ~= #y then return false end
-    for i = 1, #x do
-        if tonumber(x[i]) ~= tonumber(y[i]) then return false end
-    end
-    return true
-end
-
 local S = require("./solution")
 
 S.stdout = {}
