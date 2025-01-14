@@ -1,3 +1,6 @@
+-- AOC 2024 Day 18 Part 1
+-- done on 1/10/24
+
 local S = {}
 
 S.ROWS = 71
